@@ -17,6 +17,7 @@ const routes: Routes = [
     path: 'error',
     component: ErrorComponent,
   },
+  // DEFINICIÓN DE LOS PATHS DE LOS MÓDULOS QUE ME CARGARAN LOS ENRUTAMIENTOS INTERNOS:
   {
     path: 'seguridad',
     loadChildren: () => import('./modulos/seguridad/seguridad.module').then(m => m.SeguridadModule)
@@ -37,7 +38,6 @@ const routes: Routes = [
     path: '**',
     redirectTo: '/error'
   }
-
 ];
 
 @NgModule({
