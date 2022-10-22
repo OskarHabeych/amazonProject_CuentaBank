@@ -15,7 +15,7 @@ export class SeguridadService {
     this.verificarSesion();
    }
 
-  login(correo: String, clave: String): Observable<any> { //Un "observable" es una definición de algo que esta esperando que algo suceda, en el momento que lo soliciten enotnces él realiza una acción y se debe utilizar por medio de una subscripción
+  login(correo: string, clave: string): Observable<any> { //Un "observable" es una definición de algo que esta esperando que algo suceda, en el momento que lo soliciten enotnces él realiza una acción y se debe utilizar por medio de una subscripción
     //Hacemos la solicitud al servicio web de login pasandole usuario y clave
     return this.http.post<any>(`${this.url}/login`, {
       usuario: correo,
@@ -58,8 +58,8 @@ export class SeguridadService {
 
   eliminarSesion(){
     //Eliminamos los datos de la sesion
-    localStorage.removeItem("sessionData")
-    this.refrescarDatosSession(new UsuarioModelo)
+    localStorage.removeItem("sessionData") // Me remueve la información o los datos del Usuario que hay en el localStorage
+    this.refrescarDatosSession(new UsuarioModelo) // A continuación me refresca los datos de la sesión
   }
 
   verificarSesion(){
@@ -80,15 +80,15 @@ export class SeguridadService {
     return null
   }
 
-  datosUsuarioSesion(){
+  datosUsuarioSesion(){ // Método que verifica la información de sesión del usuario para cuando se necesite retornarla
     return this.sessionUserData.asObservable();
   }
 
   getToken(){
-    let sessionData = localStorage.getItem("sessionData");
+    let sessionData = localStorage.getItem("sessionData"); //Trae la info del localStorage 
     if(sessionData){
-      let data = JSON.parse(sessionData);
-      return data.token;
+      let data = JSON.parse(sessionData); //Obtiene la información del localStorage y la organiza
+      return data.token; //Me devuelve únicamente un token que es el permiso que habilita la realización de diferentes servicios que ofrece la página para sus usuarios
     }
     return ''
   }

@@ -12,7 +12,7 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: "logout",
+    path: "logout", 
     component: CerrarSesionComponent,
   },
   {

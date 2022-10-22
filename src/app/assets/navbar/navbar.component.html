@@ -2,10 +2,13 @@
     <div class="nav-wrapper amber darken-2">
       <a href="#" class="brand-logo #ffc400 amber accent-3">Logo</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a routerLink="/admin/get">Usuarios</a></li>
-        <li><a routerLink="/cliente/get">Clientes</a></li>
-        <li><a routerLink="/cuenta/get">Cuentas</a></li>
-        <li class="orange darken-3"><a routerLink="/seguridad/login">Login</a></li>
+        <li *ngIf="activeSession"><a routerLink="/admin/get">Usuarios</a></li>
+        <li *ngIf="activeSession"><a routerLink="/cliente/get">Clientes</a></li>
+        <li *ngIf="activeSession"><a routerLink="/cuenta/get">Cuentas</a></li>
+        <!-- Abrir o cerrar Sesion -->
+        <li class="orange darken-3" *ngIf="!activeSession"><a routerLink="/seguridad/login">Login</a></li> 
+        <li *ngIf="!activeSession"><a routerLink="/admin/create">Registrarse</a></li>
+        <li *ngIf="activeSession"><a routerLink="/seguridad/logout">Cerrar Sesion</a></li>
       </ul>
     </div>
   </nav>

@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import * as CryptoJS from 'crypto-js';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
 import { Router } from '@angular/router';
+import Swal from 'sweetalert2'
 
 //const cryptoJS = require("crypto-js");
 
@@ -35,11 +36,26 @@ export class LoginComponent implements OnInit {
       // se hace el inicio de sesión y si muestra alguna información, entonces ésta info almacénela en la sesión 
       (data: any) => {  
         this.seguridadService.almacenarSesion(data) //Acá estamos verificando que la info sea correcta y si es así almacenará los datos de la sesión y me la redirecciona a la página del index
-        this.router.navigate(['/index']);
+        Swal.fire({
+          position: 'top-end',
+          icon: 'success',
+          title: 'Bienvenido',
+          showConfirmButton: false,
+          timer: 1500
+        }).then(() =>{
+          this.router.navigate(['/index']);
+        })
+
       },
       (error: any) => {
         console.log(error)
-        alert("Datos inválidos");
+        Swal.fire({
+          title: 'Error!',
+          text: 'Datos invalidos',
+          icon: 'error',
+          confirmButtonText: 'Cool'
+        })
+
       }
       );
     }

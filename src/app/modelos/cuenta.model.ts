@@ -1,4 +1,4 @@
-export class UsuarioModelo{
+export class CuentaModelo{
     id?: String;
     num_Cuenta?: string;
     tipo_Cuenta?: string;
