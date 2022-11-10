@@ -1,1 +1,35 @@
-<p>get works!</p>
+<div class="container">
+    <br>
+    <a routerLink="/cuenta/create" class="btn">Crear Cuenta</a>
+   
+    <table class="table responsive">
+      <thead>
+        <tr>
+            <th>Número de cuenta</th>
+            <th>Tipo de cuenta</th>
+            <th>Estado cuenta</th>
+            <th>Debitos</th>
+            <th>Creditos</th>
+            <th>savings</th>
+            <th>Padre</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+ 
+    <tbody>
+      <tr *ngFor="let p of listar">
+        <td>{{p.num_Cuenta}}</td>
+        <td>{{p.tipo_Cuenta}}</td>
+        <td>{{p.estado_Cuenta}}</td>
+        <td>{{p.debitos}}</td>
+        <td>{{p.creditos}}</td>
+        <td>{{p.savings}}</td>
+        <td>{{p.padre}}</td>
+        <td>
+          <a routerLink="/cuenta/edit/{{p.id}}" class="btn">Editar</a>
+          <button class="btn red" (click)="delete(p.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  </div>

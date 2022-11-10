@@ -1,6 +1,8 @@
 <nav>
     <div class="nav-wrapper amber darken-2">
       <a href="#" class="brand-logo #ffc400 amber accent-3">Logo</a>
+      <!-- La siguiente linea de código sería si queremos dar la bienvenida por sesión al usuario logueado -->
+      <!-- <a href="#" class="brand-logo #ffc400 amber accent-3">Bienvenido {{nombre}}</a> -->
       <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li *ngIf="activeSession"><a routerLink="/admin/get">Usuarios</a></li>
         <li *ngIf="activeSession"><a routerLink="/cliente/get">Clientes</a></li>

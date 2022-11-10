@@ -29,6 +29,10 @@ export class ClienteService {
       direccion: cliente.direccion, 
       poblacion: cliente.poblacion,
       estado: cliente.estado 
+    }, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
     });
   }
 

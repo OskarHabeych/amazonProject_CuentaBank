@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import * as cryptoJS from 'crypto-js';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { UsuarioModelo } from '../modelos/usuario.model';
@@ -85,7 +86,7 @@ export class SeguridadService {
   }
 
   getToken(){
-    let sessionData = localStorage.getItem("sessionData"); //Trae la info del localStorage 
+    let sessionData = localStorage.getItem("sessionData"); //Trae la info del localStorage y me la guarda en una variable
     if(sessionData){
       let data = JSON.parse(sessionData); //Obtiene la información del localStorage y la organiza
       return data.token; //Me devuelve únicamente un token que es el permiso que habilita la realización de diferentes servicios que ofrece la página para sus usuarios

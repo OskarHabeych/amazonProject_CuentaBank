@@ -1,1 +1,54 @@
-<p>create works!</p>
+<div class="container">
+    <h3 class="center-align">Registrar Cuenta</h3>
+    <form [formGroup]="fgValidacion" class="col s12" (ngSubmit)="store()">
+      <div class="row">
+        <div class="input-field col s4">
+          <!--<input formControlName="padre" type="text" class="validate">-->
+          <select class="browser-default" formControlName="padre">
+            <option value="" disabled selected>Seleccione el Cliente relacionado</option>
+            <option *ngFor="let cliente of listadoClientes" value="{{cliente.nombre}} - {{cliente.apellidos}} - {{cliente.documento_Identidad}}">{{cliente.nombre}} {{cliente.apellidos}} - {{cliente.documento_Identidad}}</option>
+          </select>
+          <label for="padre">Cliente</label>
+        </div>
+      </div> 
+      <div class="row">
+        <div class="input-field col s4">
+          <input formControlName="num_Cuenta" type="text" class="validate">
+          <label for="num_Cuenta">No. de Cuenta</label>
+        </div>
+        <div class="input-field col s4">
+            <input formControlName="tipo_Cuenta" type="text" class="validate">
+            <label for="tipo_Cuenta">Tipo de Cuenta</label>
+          </div>
+        <div class="input-field col s4">
+            <select class="browser-default">
+                <option value="" disabled selected>Seleccione Estado</option>
+                <option value="">Activa</option>
+                <option value="">Congelada</option>
+                <option value="">Suspendida</option>
+                <option value="ced.ext">Inactiva</option>
+                <option value="pasaporte">Eliminada</option>
+            </select>
+        </div> 
+      </div>
+      <div class="row">    
+        <div class="input-field col s4">
+          <input formControlName="debitos" type="number" class="validate">
+          <label for="debitos">Débitos</label>
+        </div>
+        <div class="input-field col s4">
+          <input formControlName="creditos" type="number" class="validate">
+          <label for="creditos">Créditos</label>
+        </div>
+        <div class="input-field col s4">
+          <input formControlName="savings" type="text" class="validate">
+          <label for="savings">Savings</label>
+        </div>
+      </div>
+        <div class="row center-align">
+          <button [disabled]="!fgValidacion.valid" class="btn waves-effect waves-light" type="submit" name="action">Enviar
+            <i class="material-icons right">send</i>
+          </button>
+        </div>
+    </form>
+  </div>

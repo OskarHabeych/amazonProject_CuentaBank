@@ -27,6 +27,10 @@ export class CuentaService {
       creditos: cuenta.creditos,
       savings: cuenta.savings,
       padre: cuenta.padre 
+    }, {
+      headers: new HttpHeaders({
+        "Authorization": `Bearer ${this.token}`
+      })
     });
   }
 

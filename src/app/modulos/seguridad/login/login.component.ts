@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import * as CryptoJS from 'crypto-js';
 import { SeguridadService } from 'src/app/servicios/seguridad.service';
 import { Router } from '@angular/router';
 import Swal from 'sweetalert2'
+import * as cryptoJS from 'crypto-js';
 
 //const cryptoJS = require("crypto-js");
 
@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
   identificarUsuario() {
     let usuario = this.fgValidacion.controls["correo"].value; //Me trae la info del usuario
     let clave = this.fgValidacion.controls["clave"].value; //Me trae la info de la clave
-    let claveCifrada = CryptoJS.MD5(clave).toString(); //Ciframos la clave ya que para este punto ya se recibio la clave sin cifrar del paso anterior
+    let claveCifrada = cryptoJS.MD5(clave).toString(); //Ciframos la clave ya que para este punto ya se recibio la clave sin cifrar del paso anterior
     
     this.seguridadService.login(usuario, claveCifrada).subscribe( //llamamos al método login con el usuario y la clave 
       // se hace el inicio de sesión y si muestra alguna información, entonces ésta info almacénela en la sesión 
@@ -59,6 +59,5 @@ export class LoginComponent implements OnInit {
       }
       );
     }
-
 
 }
