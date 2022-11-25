@@ -28,13 +28,13 @@ export class CreateComponent implements OnInit {
     debitos: ['', [Validators.required]],
     creditos: ['', [Validators.required]],
     savings: ['', [Validators.required]],
-    //padre: ['', [Validators.required]],
+    padre: ['', [Validators.required]],
   });
 
   listadoClientes: ClienteModelo[] = []
 
   ngOnInit(): void {
-    this.getAllClientes(); //esta método ya va a tener la información del listado de todos los clientes para que aparezca impresa en la interface del usuario que se relaciona con el archivo "crear Cliente nuevo"
+    this.getAllClientes(); //este método ya va a tener la información del listado de todos los clientes para que aparezca impresa en la interface del usuario que se relaciona con el archivo "crear Cliente nuevo"
   }
 
   store(){
@@ -45,7 +45,7 @@ export class CreateComponent implements OnInit {
     cuenta.debitos = this.fgValidacion.controls["debitos"].value;
     cuenta.creditos = this.fgValidacion.controls["creditos"].value;
     cuenta.savings = this.fgValidacion.controls["savings"].value;
-    //cuenta.padre = this.fgValidacion.controls["padre"].value;
+    cuenta.padre = this.fgValidacion.controls["padre"].value;
 
     this.cuentaService.store(cuenta).subscribe((data: CuentaModelo)=> {
       Swal.fire('Cuenta Creada correctamente!', '', 'success')

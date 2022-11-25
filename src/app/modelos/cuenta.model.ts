@@ -6,5 +6,5 @@ export class CuentaModelo{
     debitos?: number;
     creditos?: number;
     savings?: number;
-    padre?: string;
+    padre?: string;   
   }
